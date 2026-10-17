@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="534" viewBox="0 0 800 534">
+  <!-- Illustration only: no brand logo (Xiaomi, Mi and PatchWall are trademarks of their owners). -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1f2e"/>
+      <stop offset="1" stop-color="#2a1a12"/>
+    </linearGradient>
+    <radialGradient id="halo" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ff7a1a" stop-opacity="0.5"/>
+      <stop offset="0.6" stop-color="#ff6900" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#ff6900" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#20304f"/>
+      <stop offset="1" stop-color="#0f1626"/>
+    </linearGradient>
+    <linearGradient id="remote" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f2f4f8"/>
+      <stop offset="1" stop-color="#c3c9d6"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="534" fill="url(#bg)"/>
+  <circle cx="330" cy="230" r="300" fill="url(#halo)"/>
+
+  <!-- The TV -->
+  <rect x="90" y="70" width="480" height="290" rx="14" fill="#0a0d14"/>
+  <rect x="104" y="84" width="452" height="262" rx="6" fill="url(#screen)"/>
+  <!-- Home screen: a row of application tiles -->
+  <rect x="128" y="108" width="404" height="96" rx="10" fill="#ff6900" opacity="0.9"/>
+  <rect x="148" y="128" width="150" height="14" rx="7" fill="#ffffff" opacity="0.95"/>
+  <rect x="148" y="152" width="96" height="10" rx="5" fill="#ffffff" opacity="0.6"/>
+  <g>
+    <rect x="128" y="226" width="68" height="68" rx="14" fill="#e62117"/>
+    <polygon points="154,246 154,274 178,260" fill="#ffffff"/>
+    <rect x="212" y="226" width="68" height="68" rx="14" fill="#c2185b"/>
+    <rect x="228" y="244" width="36" height="32" rx="3" fill="none" stroke="#ffffff" stroke-width="4"/>
+    <path d="M228 254 h36 M238 244 v10 M254 244 v10" stroke="#ffffff" stroke-width="3"/>
+    <rect x="296" y="226" width="68" height="68" rx="14" fill="#1e9e5a"/>
+    <path d="M322 276 v-30 l22 -5 v28" stroke="#ffffff" stroke-width="4" fill="none" stroke-linejoin="round"/>
+    <circle cx="317" cy="277" r="7" fill="#ffffff"/>
+    <circle cx="339" cy="270" r="7" fill="#ffffff"/>
+    <rect x="380" y="226" width="68" height="68" rx="14" fill="#2f80ed"/>
+    <circle cx="406" cy="254" r="11" fill="#ffd25f"/>
+    <path d="M400 276 h34 a10 10 0 0 0 -4 -19 a14 14 0 0 0 -26 4 a8 8 0 0 0 -4 15 z" fill="#ffffff"/>
+    <rect x="464" y="226" width="68" height="68" rx="14" fill="#7b61ff"/>
+    <rect x="480" y="244" width="36" height="28" rx="4" fill="none" stroke="#ffffff" stroke-width="4"/>
+    <polygon points="494,251 494,265 506,258" fill="#ffffff"/>
+  </g>
+  <rect x="300" y="312" width="60" height="6" rx="3" fill="#ffffff" opacity="0.35"/>
+  <!-- Stand -->
+  <rect x="150" y="360" width="10" height="34" rx="3" fill="#0a0d14"/>
+  <rect x="500" y="360" width="10" height="34" rx="3" fill="#0a0d14"/>
+  <rect x="120" y="392" width="70" height="8" rx="4" fill="#0a0d14"/>
+  <rect x="470" y="392" width="70" height="8" rx="4" fill="#0a0d14"/>
+
+  <!-- The remote, sending to the TV -->
+  <g transform="rotate(-18 660 300)">
+    <rect x="624" y="190" width="72" height="230" rx="36" fill="url(#remote)"/>
+    <circle cx="660" cy="222" r="10" fill="#ff6900"/>
+    <circle cx="660" cy="282" r="28" fill="#dfe3ec" stroke="#a9b1c2" stroke-width="2"/>
+    <circle cx="660" cy="282" r="11" fill="#ffffff" stroke="#a9b1c2" stroke-width="2"/>
+    <rect x="642" y="326" width="36" height="8" rx="4" fill="#a9b1c2"/>
+    <rect x="642" y="344" width="36" height="8" rx="4" fill="#a9b1c2"/>
+    <rect x="642" y="362" width="36" height="8" rx="4" fill="#a9b1c2"/>
+  </g>
+  <g fill="none" stroke="#ff8a3d" stroke-width="5" stroke-linecap="round" opacity="0.9">
+    <path d="M584.7 194.3 A22 22 0 0 1 596.7 180.1"/>
+    <path d="M567.4 189.6 A40 40 0 0 1 589.1 163.7" opacity="0.7"/>
+    <path d="M550.0 185.0 A58 58 0 0 1 581.5 147.4" opacity="0.45"/>
+  </g>
+
+  <!-- Title -->
+  <text x="400" y="462" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="46" font-weight="700" fill="#ffffff" text-anchor="middle">Xiaomi TV</text>
+  <text x="400" y="502" font-family="Inter, 'Helvetica Neue', Arial, sans-serif" font-size="22" fill="#ffb27a" text-anchor="middle">for Gladys Assistant · local network</text>
+</svg>

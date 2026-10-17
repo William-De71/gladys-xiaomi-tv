@@ -1,0 +1,17 @@
+gladys-xiaomi-tv
+Copyright 2026 William-De71
+
+This product includes software developed by William-De71
+(https://github.com/William-De71/gladys-xiaomi-tv), licensed under the Apache
+License, Version 2.0.
+
+The client of the Xiaomi TV local API (src/mitv/) was written for this
+project. Xiaomi does not document this API: the community documentation of
+pymitv (https://github.com/simse/pymitv, MIT, used by the Home Assistant
+"Xiaomi TV" integration) and mireco (https://github.com/spocky/mireco) served
+as the reference for the requests; no code was copied from them.
+
+Xiaomi, Mi and PatchWall are trademarks of their respective owners. This
+project is not affiliated with, endorsed or supported by them. It talks to the
+TVs with the same local requests as the Mi Remote app, which a firmware update
+may change without notice.

@@ -1,0 +1,126 @@
+{
+  "external_id": "ext:test-integration:device:009ec8a1b2c3",
+  "should_poll": false,
+  "features": [
+    {
+      "external_id": "ext:test-integration:device:009ec8a1b2c3:power",
+      "category": "television",
+      "type": "binary",
+      "unit": null,
+      "min": 0,
+      "max": 1,
+      "step": null,
+      "read_only": false
+    },
+    {
+      "external_id": "ext:test-integration:device:009ec8a1b2c3:volume",
+      "category": "television",
+      "type": "volume",
+      "unit": null,
+      "min": 0,
+      "max": 100,
+      "step": null,
+      "read_only": false
+    },
+    {
+      "external_id": "ext:test-integration:device:009ec8a1b2c3:volume_up",
+      "category": "television",
+      "type": "volume-up",
+      "unit": null,
+      "min": 0,
+      "max": 1,
+      "step": null,
+      "read_only": false
+    },
+    {
+      "external_id": "ext:test-integration:device:009ec8a1b2c3:volume_down",
+      "category": "television",
+      "type": "volume-down",
+      "unit": null,
+      "min": 0,
+      "max": 1,
+      "step": null,
+      "read_only": false
+    },
+    {
+      "external_id": "ext:test-integration:device:009ec8a1b2c3:volume_mute",
+      "category": "television",
+      "type": "volume-mute",
+      "unit": null,
+      "min": 0,
+      "max": 1,
+      "step": null,
+      "read_only": false
+    },
+    {
+      "external_id": "ext:test-integration:device:009ec8a1b2c3:up",
+      "category": "television",
+      "type": "up",
+      "unit": null,
+      "min": 0,
+      "max": 1,
+      "step": null,
+      "read_only": false
+    },
+    {
+      "external_id": "ext:test-integration:device:009ec8a1b2c3:down",
+      "category": "television",
+      "type": "down",
+      "unit": null,
+      "min": 0,
+      "max": 1,
+      "step": null,
+      "read_only": false
+    },
+    {
+      "external_id": "ext:test-integration:device:009ec8a1b2c3:left",
+      "category": "television",
+      "type": "left",
+      "unit": null,
+      "min": 0,
+      "max": 1,
+      "step": null,
+      "read_only": false
+    },
+    {
+      "external_id": "ext:test-integration:device:009ec8a1b2c3:right",
+      "category": "television",
+      "type": "right",
+      "unit": null,
+      "min": 0,
+      "max": 1,
+      "step": null,
+      "read_only": false
+    },
+    {
+      "external_id": "ext:test-integration:device:009ec8a1b2c3:enter",
+      "category": "television",
+      "type": "enter",
+      "unit": null,
+      "min": 0,
+      "max": 1,
+      "step": null,
+      "read_only": false
+    },
+    {
+      "external_id": "ext:test-integration:device:009ec8a1b2c3:menu",
+      "category": "television",
+      "type": "menu",
+      "unit": null,
+      "min": 0,
+      "max": 1,
+      "step": null,
+      "read_only": false
+    },
+    {
+      "external_id": "ext:test-integration:device:009ec8a1b2c3:back",
+      "category": "television",
+      "type": "return",
+      "unit": null,
+      "min": 0,
+      "max": 1,
+      "step": null,
+      "read_only": false
+    }
+  ]
+}

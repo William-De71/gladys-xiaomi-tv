@@ -1,0 +1,505 @@
+{
+  "manifest_version": 1,
+  "type": "device",
+  "name": "Xiaomi TV",
+  "description": {
+    "en": "Xiaomi TVs (MIUI TV / PatchWall) on the local network: power, volume, keys and apps.",
+    "fr": "Téléviseurs Xiaomi (MIUI TV / PatchWall) en local : marche, volume, touches et applis.",
+    "de": "Xiaomi-Fernseher (MIUI TV / PatchWall) lokal: Ein/Aus, Lautstärke, Tasten und Apps.",
+    "es": "Televisores Xiaomi (MIUI TV / PatchWall) en local: encendido, volumen, teclas y apps."
+  },
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/william-de71/gladys-xiaomi-tv:0.1.0",
+  "gladys_version": ">=5.2.0",
+  "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-xiaomi-tv/main/cover.jpg",
+  "categories": ["multimedia"],
+  "transports": ["local"],
+  "network_discovery": [
+    {
+      "type": "ssdp",
+      "st": "ssdp:all"
+    }
+  ],
+  "network_wake": true,
+  "actions": [
+    {
+      "key": "test_connection",
+      "timeout_seconds": 60,
+      "label": {
+        "en": "Search and test the TVs",
+        "fr": "Rechercher et tester les téléviseurs",
+        "de": "Fernseher suchen und testen",
+        "es": "Buscar y probar los televisores"
+      },
+      "description": {
+        "en": "Searches the local network, then lists every TV found with its address, its MAC address and whether it answers.",
+        "fr": "Cherche sur le réseau local, puis liste chaque téléviseur trouvé avec son adresse, son adresse MAC et s’il répond.",
+        "de": "Durchsucht das lokale Netzwerk und listet jeden gefundenen Fernseher mit Adresse, MAC-Adresse und Erreichbarkeit auf.",
+        "es": "Busca en la red local y lista cada televisor encontrado con su dirección, su dirección MAC y si responde."
+      }
+    }
+  ],
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "Before you start",
+        "fr": "Avant de commencer",
+        "de": "Bevor Sie beginnen",
+        "es": "Antes de empezar"
+      },
+      "description": {
+        "en": "For Xiaomi TVs running MIUI TV / PatchWall (mostly sold in China and India), which answer on port 6095 of the local network: no account, no pairing. Android TV and Google TV models (Mi TV P1, Q1, Xiaomi TV A…) do not have this port. Switch the TV on, connect it to the same network as Gladys, then open the Discover tab. Nothing goes through the cloud.",
+        "fr": "Pour les téléviseurs Xiaomi sous MIUI TV / PatchWall (surtout vendus en Chine et en Inde), qui répondent sur le port 6095 du réseau local : ni compte, ni appairage. Les modèles Android TV et Google TV (Mi TV P1, Q1, Xiaomi TV A…) n’ont pas ce port. Allumez le téléviseur, connectez-le au même réseau que Gladys, puis ouvrez l’onglet Découverte. Rien ne passe par le cloud.",
+        "de": "Für Xiaomi-Fernseher mit MIUI TV / PatchWall (vor allem in China und Indien verkauft), die im lokalen Netzwerk auf Port 6095 antworten: kein Konto, keine Kopplung. Modelle mit Android TV und Google TV (Mi TV P1, Q1, Xiaomi TV A…) haben diesen Port nicht. Schalten Sie den Fernseher ein, verbinden Sie ihn mit demselben Netzwerk wie Gladys und öffnen Sie den Tab Entdecken. Nichts läuft über die Cloud.",
+        "es": "Para los televisores Xiaomi con MIUI TV / PatchWall (vendidos sobre todo en China e India), que responden en el puerto 6095 de la red local: sin cuenta ni emparejamiento. Los modelos Android TV y Google TV (Mi TV P1, Q1, Xiaomi TV A…) no tienen este puerto. Encienda el televisor, conéctelo a la misma red que Gladys y abra la pestaña Descubrir. Nada pasa por la nube."
+      }
+    },
+    {
+      "key": "hosts",
+      "type": "string",
+      "default": "",
+      "label": {
+        "en": "IP addresses (optional)",
+        "fr": "Adresses IP (facultatif)",
+        "de": "IP-Adressen (optional)",
+        "es": "Direcciones IP (opcional)"
+      },
+      "placeholder": {
+        "en": "192.168.1.50",
+        "fr": "192.168.1.50",
+        "de": "192.168.1.50",
+        "es": "192.168.1.50"
+      },
+      "description": {
+        "en": "Only for TVs the search does not find (another subnet, a network that blocks multicast). Separate them with commas.",
+        "fr": "Seulement pour les téléviseurs que la recherche ne trouve pas (autre sous-réseau, réseau qui bloque le multicast). Séparez-les par des virgules.",
+        "de": "Nur für Fernseher, die die Suche nicht findet (anderes Subnetz, Netzwerk, das Multicast blockiert). Durch Kommas trennen.",
+        "es": "Solo para los televisores que la búsqueda no encuentra (otra subred, una red que bloquea el multicast). Sepárelas con comas."
+      }
+    },
+    {
+      "key": "poll_interval",
+      "type": "select",
+      "default": "10",
+      "label": {
+        "en": "State refresh",
+        "fr": "Actualisation de l’état",
+        "de": "Zustandsaktualisierung",
+        "es": "Actualización del estado"
+      },
+      "description": {
+        "en": "How often each TV is asked whether it answers and what its volume is.",
+        "fr": "Fréquence à laquelle chaque téléviseur est interrogé : répond-il, quel est son volume.",
+        "de": "Wie oft jeder Fernseher gefragt wird, ob er antwortet und wie laut er ist.",
+        "es": "Con qué frecuencia se pregunta a cada televisor si responde y cuál es su volumen."
+      },
+      "options": [
+        {
+          "value": "10",
+          "label": {
+            "en": "10 seconds",
+            "fr": "10 secondes",
+            "de": "10 Sekunden",
+            "es": "10 segundos"
+          }
+        },
+        {
+          "value": "30",
+          "label": {
+            "en": "30 seconds",
+            "fr": "30 secondes",
+            "de": "30 Sekunden",
+            "es": "30 segundos"
+          }
+        },
+        {
+          "value": "60",
+          "label": {
+            "en": "1 minute",
+            "fr": "1 minute",
+            "de": "1 Minute",
+            "es": "1 minuto"
+          }
+        }
+      ]
+    },
+    {
+      "key": "rescan_interval",
+      "type": "select",
+      "default": "60",
+      "label": {
+        "en": "Automatic search",
+        "fr": "Recherche automatique",
+        "de": "Automatische Suche",
+        "es": "Búsqueda automática"
+      },
+      "description": {
+        "en": "Searches the network again on a schedule, to follow a TV whose address changed. A TV that stops answering triggers a search anyway.",
+        "fr": "Relance la recherche régulièrement, pour suivre un téléviseur dont l’adresse a changé. Un téléviseur qui ne répond plus déclenche de toute façon une recherche.",
+        "de": "Sucht das Netzwerk regelmäßig erneut ab, um einem Fernseher mit geänderter Adresse zu folgen. Ein Fernseher, der nicht mehr antwortet, löst ohnehin eine Suche aus.",
+        "es": "Vuelve a buscar en la red periódicamente, para seguir a un televisor cuya dirección ha cambiado. Un televisor que deja de responder lanza una búsqueda de todos modos."
+      },
+      "options": [
+        {
+          "value": "0",
+          "label": {
+            "en": "Off",
+            "fr": "Désactivée",
+            "de": "Aus",
+            "es": "Desactivada"
+          }
+        },
+        {
+          "value": "15",
+          "label": {
+            "en": "Every 15 minutes",
+            "fr": "Toutes les 15 minutes",
+            "de": "Alle 15 Minuten",
+            "es": "Cada 15 minutos"
+          }
+        },
+        {
+          "value": "60",
+          "label": {
+            "en": "Every hour",
+            "fr": "Toutes les heures",
+            "de": "Jede Stunde",
+            "es": "Cada hora"
+          }
+        }
+      ]
+    },
+    {
+      "key": "language",
+      "type": "select",
+      "default": "en",
+      "label": {
+        "en": "Language of the device texts",
+        "fr": "Langue des textes des appareils",
+        "de": "Sprache der Gerätetexte",
+        "es": "Idioma de los textos de los dispositivos"
+      },
+      "description": {
+        "en": "Feature names in the Discover tab and error messages of the scenes. Gladys does not send your language with them.",
+        "fr": "Noms des fonctionnalités dans l’onglet Découverte et messages d’erreur des scènes. Gladys n’envoie pas votre langue avec eux.",
+        "de": "Funktionsnamen im Tab Entdecken und Fehlermeldungen der Szenen. Gladys sendet Ihre Sprache nicht mit.",
+        "es": "Nombres de las funciones en la pestaña Descubrir y mensajes de error de las escenas. Gladys no envía su idioma con ellos."
+      },
+      "options": [
+        {
+          "value": "en",
+          "label": {
+            "en": "English",
+            "fr": "Anglais",
+            "de": "Englisch",
+            "es": "Inglés"
+          }
+        },
+        {
+          "value": "fr",
+          "label": {
+            "en": "French",
+            "fr": "Français",
+            "de": "Französisch",
+            "es": "Francés"
+          }
+        },
+        {
+          "value": "de",
+          "label": {
+            "en": "German",
+            "fr": "Allemand",
+            "de": "Deutsch",
+            "es": "Alemán"
+          }
+        },
+        {
+          "value": "es",
+          "label": {
+            "en": "Spanish",
+            "fr": "Espagnol",
+            "de": "Spanisch",
+            "es": "Español"
+          }
+        }
+      ]
+    },
+    {
+      "key": "help",
+      "type": "section",
+      "label": {
+        "en": "A TV is not found?",
+        "fr": "Un téléviseur n’est pas trouvé ?",
+        "de": "Ein Fernseher wird nicht gefunden?",
+        "es": "¿No se encuentra un televisor?"
+      },
+      "description": {
+        "en": "Check that the TV is on, on the same network as Gladys (not a guest network), and that http://<TV address>:6095/request?action=isalive answers in a browser. If it does not, your model does not have this API. Give the TV a fixed IP address in your router.",
+        "fr": "Vérifiez que le téléviseur est allumé, sur le même réseau que Gladys (pas un réseau invité), et que http://<adresse du téléviseur>:6095/request?action=isalive répond dans un navigateur. Sinon, votre modèle n’a pas cette API. Donnez au téléviseur une adresse IP fixe dans votre box.",
+        "de": "Prüfen Sie, ob der Fernseher eingeschaltet und im selben Netzwerk wie Gladys ist (kein Gastnetz) und ob http://<Adresse des Fernsehers>:6095/request?action=isalive im Browser antwortet. Wenn nicht, hat Ihr Modell diese API nicht. Geben Sie dem Fernseher im Router eine feste IP-Adresse.",
+        "es": "Compruebe que el televisor está encendido, en la misma red que Gladys (no una red de invitados), y que http://<dirección del televisor>:6095/request?action=isalive responde en un navegador. Si no, su modelo no tiene esta API. Asigne al televisor una dirección IP fija en su router."
+      }
+    }
+  ],
+  "widgets": [
+    {
+      "key": "television",
+      "icon": "tv",
+      "action_timeout_seconds": 60,
+      "label": {
+        "en": "Xiaomi TV",
+        "fr": "Téléviseur Xiaomi",
+        "de": "Xiaomi-Fernseher",
+        "es": "Televisor Xiaomi"
+      },
+      "description": {
+        "en": "One TV: state, volume, apps; buttons for power, home, mute and opening an app.",
+        "fr": "Un téléviseur : état, volume, applis ; boutons marche, accueil, sourdine et ouverture d’appli.",
+        "de": "Ein Fernseher: Zustand, Lautstärke, Apps; Tasten für Ein/Aus, Start, Stumm und App öffnen.",
+        "es": "Un televisor: estado, volumen, apps; botones de encendido, inicio, silencio y abrir una app."
+      },
+      "settings": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": true,
+          "label": {
+            "en": "TV",
+            "fr": "Téléviseur",
+            "de": "Fernseher",
+            "es": "Televisor"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "launch_app",
+      "timeout_seconds": 20,
+      "label": {
+        "en": "Open an app on a Xiaomi TV",
+        "fr": "Ouvrir une appli sur un téléviseur Xiaomi",
+        "de": "App auf einem Xiaomi-Fernseher öffnen",
+        "es": "Abrir una app en un televisor Xiaomi"
+      },
+      "description": {
+        "en": "Opens an application of the TV, by its name as shown on the TV or by its package name.",
+        "fr": "Ouvre une application du téléviseur, par son nom tel qu’affiché sur le téléviseur ou par son nom de paquet.",
+        "de": "Öffnet eine App des Fernsehers, über ihren Namen wie auf dem Fernseher angezeigt oder über ihren Paketnamen.",
+        "es": "Abre una aplicación del televisor, por su nombre tal como aparece en el televisor o por su nombre de paquete."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": true,
+          "label": {
+            "en": "TV",
+            "fr": "Téléviseur",
+            "de": "Fernseher",
+            "es": "Televisor"
+          }
+        },
+        {
+          "key": "app",
+          "type": "string",
+          "required": true,
+          "label": {
+            "en": "Application",
+            "fr": "Application",
+            "de": "App",
+            "es": "Aplicación"
+          },
+          "placeholder": {
+            "en": "Netflix",
+            "fr": "Netflix",
+            "de": "Netflix",
+            "es": "Netflix"
+          },
+          "description": {
+            "en": "The widget lists the applications of the TV. A package name (com.netflix.ninja) also works.",
+            "fr": "Le widget liste les applications du téléviseur. Un nom de paquet (com.netflix.ninja) fonctionne aussi.",
+            "de": "Das Widget listet die Apps des Fernsehers auf. Ein Paketname (com.netflix.ninja) funktioniert auch.",
+            "es": "El widget lista las aplicaciones del televisor. También sirve un nombre de paquete (com.netflix.ninja)."
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "app_name",
+          "type": "string",
+          "label": {
+            "en": "Application name",
+            "fr": "Nom de l’application",
+            "de": "Name der App",
+            "es": "Nombre de la aplicación"
+          }
+        },
+        {
+          "key": "package",
+          "type": "string",
+          "label": {
+            "en": "Package name",
+            "fr": "Nom de paquet",
+            "de": "Paketname",
+            "es": "Nombre de paquete"
+          }
+        }
+      ]
+    },
+    {
+      "key": "send_keys",
+      "timeout_seconds": 120,
+      "label": {
+        "en": "Press keys on a Xiaomi TV",
+        "fr": "Appuyer sur des touches d’un téléviseur Xiaomi",
+        "de": "Tasten eines Xiaomi-Fernsehers drücken",
+        "es": "Pulsar teclas de un televisor Xiaomi"
+      },
+      "description": {
+        "en": "A sequence of remote keys with a pause between them, to reach a menu entry.",
+        "fr": "Une séquence de touches de la télécommande avec une pause entre elles, pour atteindre une entrée de menu.",
+        "de": "Eine Folge von Fernbedienungstasten mit einer Pause dazwischen, um einen Menüeintrag zu erreichen.",
+        "es": "Una secuencia de teclas del mando con una pausa entre ellas, para llegar a una opción de menú."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": true,
+          "label": {
+            "en": "TV",
+            "fr": "Téléviseur",
+            "de": "Fernseher",
+            "es": "Televisor"
+          }
+        },
+        {
+          "key": "keys",
+          "type": "string",
+          "required": true,
+          "label": {
+            "en": "Keys",
+            "fr": "Touches",
+            "de": "Tasten",
+            "es": "Teclas"
+          },
+          "placeholder": {
+            "en": "home, down, down, enter",
+            "fr": "home, down, down, enter",
+            "de": "home, down, down, enter",
+            "es": "home, down, down, enter"
+          },
+          "description": {
+            "en": "Up to 30 keys separated by commas: power, up, down, left, right, enter, home, back, menu, volumeup, volumedown.",
+            "fr": "Jusqu’à 30 touches séparées par des virgules : power, up, down, left, right, enter, home, back, menu, volumeup, volumedown.",
+            "de": "Bis zu 30 Tasten, durch Kommas getrennt: power, up, down, left, right, enter, home, back, menu, volumeup, volumedown.",
+            "es": "Hasta 30 teclas separadas por comas: power, up, down, left, right, enter, home, back, menu, volumeup, volumedown."
+          }
+        },
+        {
+          "key": "delay_ms",
+          "type": "number",
+          "min": 200,
+          "max": 3000,
+          "default": 700,
+          "label": {
+            "en": "Pause between keys (ms)",
+            "fr": "Pause entre les touches (ms)",
+            "de": "Pause zwischen den Tasten (ms)",
+            "es": "Pausa entre teclas (ms)"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "keys_sent",
+          "type": "number",
+          "label": {
+            "en": "Keys sent",
+            "fr": "Touches envoyées",
+            "de": "Gesendete Tasten",
+            "es": "Teclas enviadas"
+          }
+        }
+      ]
+    },
+    {
+      "key": "change_source",
+      "timeout_seconds": 15,
+      "label": {
+        "en": "Switch a Xiaomi TV input",
+        "fr": "Changer l’entrée d’un téléviseur Xiaomi",
+        "de": "Eingang eines Xiaomi-Fernsehers wechseln",
+        "es": "Cambiar la entrada de un televisor Xiaomi"
+      },
+      "description": {
+        "en": "Switches the TV to an HDMI input (a console, a TV box).",
+        "fr": "Passe le téléviseur sur une entrée HDMI (une console, un boîtier TV).",
+        "de": "Schaltet den Fernseher auf einen HDMI-Eingang (eine Konsole, eine TV-Box).",
+        "es": "Cambia el televisor a una entrada HDMI (una consola, un decodificador)."
+      },
+      "fields": [
+        {
+          "key": "device",
+          "type": "select",
+          "source": "devices",
+          "required": true,
+          "label": {
+            "en": "TV",
+            "fr": "Téléviseur",
+            "de": "Fernseher",
+            "es": "Televisor"
+          }
+        },
+        {
+          "key": "source",
+          "type": "select",
+          "required": true,
+          "default": "hdmi1",
+          "label": {
+            "en": "Input",
+            "fr": "Entrée",
+            "de": "Eingang",
+            "es": "Entrada"
+          },
+          "options": [
+            {
+              "value": "hdmi1",
+              "label": {
+                "en": "HDMI 1",
+                "fr": "HDMI 1",
+                "de": "HDMI 1",
+                "es": "HDMI 1"
+              }
+            },
+            {
+              "value": "hdmi2",
+              "label": {
+                "en": "HDMI 2",
+                "fr": "HDMI 2",
+                "de": "HDMI 2",
+                "es": "HDMI 2"
+              }
+            },
+            {
+              "value": "hdmi3",
+              "label": {
+                "en": "HDMI 3",
+                "fr": "HDMI 3",
+                "de": "HDMI 3",
+                "es": "HDMI 3"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
