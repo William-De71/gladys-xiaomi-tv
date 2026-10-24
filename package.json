@@ -1,6 +1,6 @@
 {
   "name": "gladys-xiaomi-tv",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "External Gladys Assistant integration for Xiaomi TVs (MIUI TV / PatchWall): power, volume, remote keys, apps and HDMI inputs on the local network, with a widget and scene actions.",
   "homepage": "https://github.com/William-De71/gladys-xiaomi-tv",
