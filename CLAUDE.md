@@ -11,8 +11,8 @@ the SDK) in its own sandboxed Docker container, talking to Gladys through
 [`@gladysassistant/integration-sdk`](https://github.com/GladysAssistant/integration-sdk-js)
 and to the TVs **on the local network only** (`transports: ["local"]`).
 
-A **device integration** (`type: "device"`, Gladys 5.2.0+: the "Open an app"
-widget button has a form). The TVs expose an undocumented HTTP API on port
+A **device integration** (`type: "device"`, Gladys 5.3.0+: the "Open an app"
+widget button has a form (5.2.0), the catalog `keywords` need 5.3.0). The TVs expose an undocumented HTTP API on port
 6095 (the one of the Mi Remote app), implemented in `src/mitv/` from the
 community documentation: [pymitv](https://github.com/simse/pymitv) (MIT, used
 by the Home Assistant `xiaomi_tv` integration) and

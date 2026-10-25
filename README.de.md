@@ -5,7 +5,7 @@
 [![Lizenz: Apache-2.0](https://img.shields.io/badge/Lizenz-Apache--2.0-blue.svg)](LICENSE)
 [![Neueste Version](https://img.shields.io/github/v/release/William-De71/gladys-xiaomi-tv?sort=semver)](https://github.com/William-De71/gladys-xiaomi-tv/releases)
 [![CI](https://img.shields.io/github/actions/workflow/status/William-De71/gladys-xiaomi-tv/release.yml?branch=main&label=CI)](https://github.com/William-De71/gladys-xiaomi-tv/actions/workflows/release.yml)
-[![Gladys](https://img.shields.io/badge/Gladys-%E2%89%A5%205.2.0-2f6fb5)](https://gladysassistant.com)
+[![Gladys](https://img.shields.io/badge/Gladys-%E2%89%A5%205.3.0-2f6fb5)](https://gladysassistant.com)
 
 ![Xiaomi TV für Gladys Assistant](cover.jpg)
 
@@ -118,7 +118,7 @@ Kein Szenenauslöser: Der Fernseher sendet keine Ereignisse, und was die Integra
 
 ## Voraussetzungen
 
-- Gladys Assistant **5.2.0 oder neuer** (Dashboard-Widgets, Szenenaktionen und Tastenformulare von Integrationen; ältere Instanzen können die Integration nicht installieren).
+- Gladys Assistant **5.3.0 oder neuer** (Dashboard-Widgets, Szenenaktionen und Tastenformulare von Integrationen, Katalog-Suchbegriffe von Gladys 5.3; ältere Instanzen können die Integration nicht installieren).
 - Ein Xiaomi-Fernseher mit **MIUI TV / PatchWall** (vor allem in China und Indien verkauft), der auf `http://<Adresse des Fernsehers>:6095/request?action=isalive` antwortet, im selben Netzwerk wie Gladys. **Modelle mit Android TV und Google TV** (Mi TV P1, Q1, Q2, Xiaomi TV A / A Pro…) haben diese API nicht.
 - Eine feste IP-Adresse für den Fernseher im Router wird empfohlen.
 

@@ -8,7 +8,7 @@ It works with Xiaomi TVs running **MIUI TV / PatchWall**, which answer on port 6
 
 ## Requirements
 
-- Gladys Assistant 5.2.0 or later.
+- Gladys Assistant 5.3.0 or later.
 - A Xiaomi TV running MIUI TV / PatchWall, switched on and connected to the **same network as Gladys**. To check: open `http://<TV address>:6095/request?action=isalive` in a browser; the TV answers with its name.
 - On the install screen, accept the **network discovery** (SSDP), which lets Gladys find the TVs, and **Wake-on-LAN**, which lets the integration switch on a TV that no longer answers.
 

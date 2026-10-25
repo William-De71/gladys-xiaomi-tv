@@ -35,8 +35,8 @@ test('one version everywhere, image of this repository', () => {
 test('store rules: type, Gladys version, transports, categories, permissions', () => {
   assert.equal(manifest.type, 'device');
   // widgets and scene_actions need 5.1.0, the form of the "Open an app"
-  // button 5.2.0.
-  assert.equal(manifest.gladys_version, '>=5.2.0');
+  // button 5.2.0, the catalog keywords 5.3.0.
+  assert.equal(manifest.gladys_version, '>=5.3.0');
   // Everything stays on the local network: no cloud channel.
   assert.deepEqual(manifest.transports, ['local']);
   assert.deepEqual(manifest.categories, ['multimedia']);
@@ -47,6 +47,19 @@ test('store rules: type, Gladys version, transports, categories, permissions', (
   for (const key of ['location', 'containers', 'webhooks', 'scene_triggers']) {
     assert.equal(manifest[key], undefined, key);
   }
+});
+
+test('catalog keywords, worldwide (Gladys 5.3.0)', () => {
+  const { keywords } = manifest;
+  assert.ok(Array.isArray(keywords) && keywords.length >= 1 && keywords.length <= 10);
+  for (const keyword of keywords) {
+    assert.ok(keyword.trim().length >= 2 && keyword.trim().length <= 30, keyword);
+  }
+  const normalized = keywords.map((keyword) => keyword.trim().toLowerCase());
+  assert.equal(new Set(normalized).size, normalized.length);
+  assert.ok(!normalized.includes(manifest.name.toLowerCase()));
+  // Local network only: usable wherever the TV is.
+  assert.equal(manifest.countries, undefined);
 });
 
 test('configuration: keys, defaults and choices of the code', () => {

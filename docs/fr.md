@@ -8,7 +8,7 @@ Elle fonctionne avec les téléviseurs Xiaomi sous **MIUI TV / PatchWall**, qui 
 
 ## Prérequis
 
-- Gladys Assistant 5.2.0 ou plus récent.
+- Gladys Assistant 5.3.0 ou plus récent.
 - Un téléviseur Xiaomi sous MIUI TV / PatchWall, allumé et connecté au **même réseau que Gladys**. Pour le vérifier : ouvrez `http://<adresse du téléviseur>:6095/request?action=isalive` dans un navigateur ; le téléviseur répond avec son nom.
 - À l’installation, acceptez la **découverte réseau** (SSDP), qui permet à Gladys de trouver les téléviseurs, et le **Wake-on-LAN**, qui permet à l’intégration d’allumer un téléviseur qui ne répond plus.
 
